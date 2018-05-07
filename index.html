@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-callout.css">
+    <link rel="stylesheet" href="css/mqtt_message.css">
+
+    <title>MQTT API documentation</title>
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MQTT API Documentation</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+      <button class="btn btn-info my-2 my-sm-0" type="submit">Waiting connection ...</button>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  
+  <div class="row" style="margin-top: 40px;">
+    <div class="col-4">
+        <div id="accordion">
+
+          <div class="card">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h6 class="mb-0">
+                  Connection
+              </h6>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                  
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputEmail4">Host</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputPassword4">Port</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Port">
+                    </div>
+                    <div class="form-group col-md-5">
+                      <label for="inputEmail4">ClientID</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Client ID">
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputEmail4">Username</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputPassword4">Password</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputEmail4">Keep Alive</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputAddress">Last-Will Topic</label>
+                      <input type="text" class="form-control" id="inputAddress" placeholder="Topic">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Last-Will QoS</label>
+                      <select id="inputState" class="form-control">
+                        <option selected>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                      <div class="form-group col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label" for="gridCheck">
+                                Clean Session
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label" for="gridCheck">
+                                SSL
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label" for="gridCheck">
+                                Last-Will Retain
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                  <button type="submit" class="btn btn-secondary">Connect</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h6 class="mb-0">
+                  Publish
+              </h6>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+
+                <form>
+                  <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label for="inputEmail4">Topic</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">QoS</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label" for="gridCheck">
+                                Retain
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="exampleFormControlTextarea1">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                  <button type="submit" class="btn btn-secondary">Publish</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <h6 class="mb-0">
+                  Subscriptions
+              </h6>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+
+                <form>
+                  <div class="form-row">
+                        <div class="form-group col-md-5">
+                          <label for="inputEmail4">Topic</label>
+                          <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="inputState">QoS</label>
+                          <select id="inputState" class="form-control">
+                            <option selected>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                          </select>
+                        </div>
+                    </div>
+                  <button type="submit" class="btn btn-secondary">Subscribe</button>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+  </div>
+  <div class="col-8">
+    <div class="mqtt-message mqtt-message-default">
+      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
+      This is a default callout.
+    </div>
+    <div class="mqtt-message mqtt-message-danger">
+      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
+      This is a default callout.
+    </div>
+    <div class="mqtt-message mqtt-message-info">
+      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
+      This is a default callout.
+    </div>
+  </div>
+  
+  </div>
+</div>
+
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

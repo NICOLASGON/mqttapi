@@ -1,0 +1,35 @@
+.mqtt-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.mqtt-message-title {
+    color: grey;
+}
+
+.mqtt-message-default {
+    border-left-color: #777;
+}
+
+.mqtt-message-primary {
+    border-left-color: #428bca;
+}
+
+.mqtt-message-success {
+    border-left-color: #5cb85c;
+}
+
+.mqtt-message-danger {
+    border-left-color: #d9534f;
+}
+
+.mqtt-message-warning {
+    border-left-color: #f0ad4e;
+}
+
+.mqtt-message-info {
+    border-left-color: #5bc0de;
+}
