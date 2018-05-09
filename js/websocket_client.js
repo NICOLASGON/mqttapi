@@ -70,6 +70,10 @@ var websocketclient = {
         $( "#mqtt_message_stream" ).append("<div class=\"mqtt-message mqtt-message-danger\"><span class=\"mqtt-message-title\">" + message.destinationName + "</span>" + message.payloadString + "</div>");
     },
 
+    'subscribe': function (topic) {
+        this.client.subscribe(topic, {qos: 0});
+    },
+
     'disconnect': function () {
         this.client.disconnect();
     },
