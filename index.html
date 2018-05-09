@@ -31,62 +31,62 @@
 			<button class="btn btn-dark btn-block sidebar-button" data-toggle="collapse" href="#con_tab">Connection</button>
 		</div>
         <div class="row collapse show sidebar-content" id="con_tab">
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="urladdon">Host</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="urlInput" aria-describedby="urladdon" value="iot.eclipse.org">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="urladdon">Host</span>
+			  </div>
+			  <input type="text" class="form-control" id="urlInput" aria-describedby="urladdon" value="iot.eclipse.org">
+			</div>
 
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="pathaddon">Path</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="pathInput" aria-describedby="pathaddon" value="/ws">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="pathaddon">Path</span>
+			  </div>
+			  <input type="text" class="form-control" id="pathInput" aria-describedby="pathaddon" value="/ws">
+			</div>
 
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="portaddon">Port</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="portInput" aria-describedby="portaddon" value="80">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="portaddon">Port</span>
+			  </div>
+			  <input type="text" class="form-control" id="portInput" aria-describedby="portaddon" value="80">
+			</div>
 
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="useraddon">Username</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="userInput" aria-describedby="useraddon">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="useraddon">Username</span>
+			  </div>
+			  <input type="text" class="form-control" id="userInput" aria-describedby="useraddon">
+			</div>
 
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="pwaddon">Password</span>
-                                  </div>
-                                  <input type="password" class="form-control" id="pwInput" aria-describedby="pwaddon">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="pwaddon">Password</span>
+			  </div>
+			  <input type="password" class="form-control" id="pwInput" aria-describedby="pwaddon">
+			</div>
 
-                                <div class="form-group input-group-sm mb-3">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cleanSessionInput" checked>
-                                    <label class="form-check-label" for="cleanSessionInput">Clean Session</label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="sslInput">
-                                    <label class="form-check-label" for="sslInput">SSL</label>
-                                  </div>
-                                </div>
+			<div class="form-group input-group-sm mb-3">
+			  <div class="form-check">
+				<input class="form-check-input" type="checkbox" id="cleanSessionInput" checked>
+				<label class="form-check-label" for="cleanSessionInput">Clean Session</label>
+			  </div>
+			  <div class="form-check">
+				<input class="form-check-input" type="checkbox" id="sslInput">
+				<label class="form-check-label" for="sslInput">SSL</label>
+			  </div>
+			</div>
 
-                                <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                    <span class="input-group-text" id="kaaddon">Keep Alive</span>
-                                  </div>
-                                  <input type="text" class="form-control" id="keepAliveInput" aria-describedby="kaaddon" value="60">
-                                </div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="kaaddon">Keep Alive</span>
+			  </div>
+			  <input type="text" class="form-control" id="keepAliveInput" aria-describedby="kaaddon" value="60">
+			</div>
 
-                                <div class="form-group input-group mb-3">
-                                    <button id="connect_button" type="button" class="btn btn-secondary btn-block">Connect</button>
-                                </div>
+			<div class="form-group input-group mb-3">
+				<button id="connect_button" type="button" class="btn btn-secondary btn-block">Connect</button>
+			</div>
       </div>
       <div class="row">
         <button class="btn btn-dark btn-block sidebar-button" data-toggle="collapse" href="#sub_tab">Subscribe</button>
@@ -105,10 +105,10 @@
             <hr>
         </div>
 
-        <div class="card model-card">
-            <div class="card-header model-header model-header-sub" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
-                <button class="btn btn-success btn-sm model-method">Pub</button>
-                <span class="model-path">application/[applicationID]/node/[devEUI]/rx</span>
+        <div class="card model-card border-info">
+            <div class="card-header model-header model-header-pub" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                <button class="btn btn-info btn-sm model-method">Pub</button>
+                <span class="model-path">application/[applicationID]/node/[devEUI]/tx</span>
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
                 <div class="card-body model-content">
@@ -143,7 +143,30 @@
                       <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
                       
                     </dl>
-                    <button class="btn btn-success btn-sm btn-block">Publish</button>
+                    <button class="btn btn-info btn-sm btn-block">Publish</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card model-card border-success">
+            <div class="card-header model-header model-header-sub" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <button class="btn btn-success btn-sm model-method">Sub</button>
+                <span class="model-path">application/[applicationID]/node/[devEUI]/rx</span>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                <div class="card-body model-content">
+
+                    <h5>Topic members</h5>
+                    <hr>
+                    <dl class="row">
+                      <dt class="col-sm-5">applicationID</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the application"></dd>
+
+                      <dt class="col-sm-5">devEUI</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+                    </dl>
+
+                    <button class="btn btn-success btn-sm btn-block">Subscribe</button>
                 </div>
             </div>
         </div>
@@ -155,10 +178,10 @@
         <div class="model-tag">
             <a>Messages</a>
             <small>All subscribed topics.</small>
-            <button id="clear_button" type="button" class="btn btn-secondary btn-sm">Clear</button>
             <hr>
         </div>
 
+	<button id="clear_button" type="button" class="btn btn-secondary btn-sm btn-custom">Clear</button>
     <div id="mqtt_message_stream" style="padding-top: 20px;"></div>
 
   </div>

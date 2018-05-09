@@ -44,7 +44,6 @@ var websocketclient = {
 
     'onConnect': function () {
         websocketclient.connected = true;
-        websocketclient.client.subscribe("test/interface", {qos: 0});
 
         $( "#mqtt_state_indicator" ).html( "Connected" );
         $( "#mqtt_state_indicator" ).removeClass( "badge-info" );
