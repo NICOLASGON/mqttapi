@@ -14,203 +14,184 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">MQTT API Documentation</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto"></ul>
-      <button class="btn btn-info my-2 my-sm-0" type="submit">Waiting connection ...</button>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
   </div>
 </nav>
 
 <div class="container-fluid">
   
-  <div class="row" style="margin-top: 40px;">
-    <div class="col-4">
-        <div id="accordion">
+  <div class="row" style="padding-top: 20px;">
+    <div class="col-2">
 
-          <div class="card">
-            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h6 class="mb-0">
-                  Connection
-              </h6>
-            </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
-                  
-                <form>
-                  <div class="form-row">
-                    <div class="form-group col-md-5">
-                      <label for="inputEmail4">Host</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="inputPassword4">Port</label>
-                      <input type="password" class="form-control" id="inputPassword4" placeholder="Port">
-                    </div>
-                    <div class="form-group col-md-5">
-                      <label for="inputEmail4">ClientID</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Client ID">
-                    </div>
-                  </div>
+        <div class="list-group" id="myList" role="tablist">
+          <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-secondary active" data-toggle="list" href="#con" role="tab">Connection <span id="mqtt_state_indicator" class="badge badge-info badge-pill">Waiting connection ...</span></a>
+          <a class="list-group-item list-group-item-action list-group-item-secondary" data-toggle="list" href="#pub" role="tab">Subscribe</a>
+          <a class="list-group-item list-group-item-action list-group-item-secondary" data-toggle="list" href="#sub" role="tab">Publish</a>
+        </div>
 
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label for="inputEmail4">Username</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputPassword4">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputEmail4">Keep Alive</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                    </div>
-                  </div>
+        <div class="tab-content" style="padding-top: 20px;">
+          <div class="tab-pane active" id="con" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="card">
+                      <div class="card-body">
 
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="inputAddress">Last-Will Topic</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="Topic">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="inputState">Last-Will QoS</label>
-                      <select id="inputState" class="form-control">
-                        <option selected>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-row">
-                      <div class="form-group col-md-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                                Clean Session
-                              </label>
+                            <div class="card-title">
+                              <h6 class="mb-0">Connection</h6>
                             </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                                SSL
-                              </label>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                                Last-Will Retain
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                  <button type="submit" class="btn btn-secondary">Connect</button>
-                </form>
 
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              <h6 class="mb-0">
-                  Publish
-              </h6>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-              <div class="card-body">
-
-                <form>
-                  <div class="form-row">
-                        <div class="form-group col-md-5">
-                          <label for="inputEmail4">Topic</label>
-                          <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label for="inputState">QoS</label>
-                          <select id="inputState" class="form-control">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                                Retain
-                              </label>
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="urladdon">Host</span>
+                              </div>
+                              <input type="text" class="form-control" id="urlInput" aria-describedby="urladdon" value="iot.eclipse.org">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                      <div class="form-group col-md-12">
-                        <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="pathaddon">Path</span>
+                              </div>
+                              <input type="text" class="form-control" id="pathInput" aria-describedby="pathaddon" value="/ws">
+                            </div>
+
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="portaddon">Port</span>
+                              </div>
+                              <input type="text" class="form-control" id="portInput" aria-describedby="portaddon" value="80">
+                            </div>
+
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="useraddon">Username</span>
+                              </div>
+                              <input type="text" class="form-control" id="userInput" aria-describedby="useraddon">
+                            </div>
+
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="pwaddon">Password</span>
+                              </div>
+                              <input type="password" class="form-control" id="pwInput" aria-describedby="pwaddon">
+                            </div>
+
+                            <div class="input-group input-group-sm mb-3">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="kaaddon">Keep Alive</span>
+                              </div>
+                              <input type="text" class="form-control" id="keepAliveInput" aria-describedby="kaaddon" value="60">
+                            </div>
+
+                            <div class="form-group input-group-sm mb-3">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cleanSessionInput" checked>
+                                <label class="form-check-label" for="cleanSessionInput">
+                                  Clean Session
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="sslInput">
+                                <label class="form-check-label" for="sslInput">
+                                  SSL
+                                </label>
+                              </div>
+                            </div>
+
+                            <button id="connect_button" type="button" class="btn btn-secondary btn-block">Connect</button>
+
                       </div>
                     </div>
-                  <button type="submit" class="btn btn-secondary">Publish</button>
-                </form>
-
+          </div>
+          <div class="tab-pane" id="sub" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="card">
+              <div class="card-body">
+                <div class="card-title">
+                  <h6 class="mb-0">Subscribe</h6>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              <h6 class="mb-0">
-                  Subscriptions
-              </h6>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="tab-pane" id="pub" role="tabpanel" aria-labelledby="messages-tab">
+            <div class="card">
               <div class="card-body">
-
-                <form>
-                  <div class="form-row">
-                        <div class="form-group col-md-5">
-                          <label for="inputEmail4">Topic</label>
-                          <input type="email" class="form-control" id="inputEmail4" placeholder="Hostname">
-                        </div>
-                        <div class="form-group col-md-4">
-                          <label for="inputState">QoS</label>
-                          <select id="inputState" class="form-control">
-                            <option selected>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                          </select>
-                        </div>
-                    </div>
-                  <button type="submit" class="btn btn-secondary">Subscribe</button>
-                </form>
-
+                <div class="card-title">
+                  <h6 class="mb-0">Publish</h6>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
 
   </div>
-  <div class="col-8">
-    <div class="mqtt-message mqtt-message-default">
-      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
-      This is a default callout.
+
+  <div class="col-5">
+
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/rx</h5>
+          <small>5 sub-methods</small>
+        </div>
+        <p class="mb-1">Topic for payloads received from your nodes.</p>
+      </a>
+      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/join</h5>
+          <small class="text-muted">3 sub-methods</small>
+        </div>
+        <p class="mb-1">Topic for join notifications.</p>
+      </a>
+      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/ack</h5>
+          <small class="text-muted">2 sub-methods</small>
+        </div>
+        <p class="mb-1">Topic for ACK notifications.</p>
+      </a>
     </div>
-    <div class="mqtt-message mqtt-message-danger">
-      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
-      This is a default callout.
-    </div>
-    <div class="mqtt-message mqtt-message-info">
-      <div class="mqtt-message-title">2018-05-06 22:29:54 - Topic: testtopic/bar</div>
-      This is a default callout.
-    </div>
-  </div>
   
+  </div>
+  <div class="col-5">
+
+    <h5 class="text-center">MQTT Messages</h5>
+    <hr>
+
+    <div class="mqtt-message mqtt-message-default">
+      <span class="mqtt-message-title">test/</span>
+      {"payload": "test"}
+    </div>
+
+    <div class="mqtt-message mqtt-message-danger">
+      <span class="mqtt-message-title">test2/</span>
+      {"payload": "test"}
+    </div>
+
   </div>
 </div>
 
     <script src="js/jquery-3.2.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/mqttws31.min.js"></script>
+    <script src="js/websocket_client.js"></script>
+
+    <script>
+      $( "#connect_button" ).click(function() {
+        websocketclient.connect();
+      });
+
+      $('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+      });
+    </script>
+
   </body>
 </html>

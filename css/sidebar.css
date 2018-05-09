@@ -1,0 +1,27 @@
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+    
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 400px;
+    max-width: 400px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#content {
+    min-height: 100vh;
+}
