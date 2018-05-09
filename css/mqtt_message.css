@@ -8,6 +8,8 @@
 
 .mqtt-message-title {
     color: grey;
+    display: inline-block;
+    width: 150px;
 }
 
 .mqtt-message-default {

@@ -7,173 +7,162 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-callout.css">
     <link rel="stylesheet" href="css/mqtt_message.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <title>MQTT API documentation</title>
   </head>
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">MQTT API Documentation</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-  </div>
-</nav>
 
 <div class="container-fluid">
   
-  <div class="row" style="padding-top: 20px;">
-    <div class="col-2">
+  <div class="row">
+    <div class="col-2 sidebar bg-light">
 
-        <div class="list-group" id="myList" role="tablist">
-          <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-secondary active" data-toggle="list" href="#con" role="tab">Connection <span id="mqtt_state_indicator" class="badge badge-info badge-pill">Waiting connection ...</span></a>
-          <a class="list-group-item list-group-item-action list-group-item-secondary" data-toggle="list" href="#pub" role="tab">Subscribe</a>
-          <a class="list-group-item list-group-item-action list-group-item-secondary" data-toggle="list" href="#sub" role="tab">Publish</a>
+        <div class="row sidebar-brand">
+			<h6>MQTT API documentation</h6>
+		</div>
+        <div class="row">
+			<button id="mqtt_state_indicator" class="btn btn-info btn-block sidebar-button">Waiting connnection...</button>
+		</div>
+
+        <div class="row">
+			<button class="btn btn-dark btn-block sidebar-button" data-toggle="collapse" href="#con_tab">Connection</button>
+		</div>
+        <div class="row collapse show sidebar-content" id="con_tab">
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="urladdon">Host</span>
+                                  </div>
+                                  <input type="text" class="form-control" id="urlInput" aria-describedby="urladdon" value="iot.eclipse.org">
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="pathaddon">Path</span>
+                                  </div>
+                                  <input type="text" class="form-control" id="pathInput" aria-describedby="pathaddon" value="/ws">
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="portaddon">Port</span>
+                                  </div>
+                                  <input type="text" class="form-control" id="portInput" aria-describedby="portaddon" value="80">
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="useraddon">Username</span>
+                                  </div>
+                                  <input type="text" class="form-control" id="userInput" aria-describedby="useraddon">
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="pwaddon">Password</span>
+                                  </div>
+                                  <input type="password" class="form-control" id="pwInput" aria-describedby="pwaddon">
+                                </div>
+
+                                <div class="form-group input-group-sm mb-3">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cleanSessionInput" checked>
+                                    <label class="form-check-label" for="cleanSessionInput">Clean Session</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sslInput">
+                                    <label class="form-check-label" for="sslInput">SSL</label>
+                                  </div>
+                                </div>
+
+                                <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="kaaddon">Keep Alive</span>
+                                  </div>
+                                  <input type="text" class="form-control" id="keepAliveInput" aria-describedby="kaaddon" value="60">
+                                </div>
+
+                                <div class="form-group input-group mb-3">
+                                    <button id="connect_button" type="button" class="btn btn-secondary btn-block">Connect</button>
+                                </div>
+      </div>
+      <div class="row">
+        <button class="btn btn-dark btn-block sidebar-button" data-toggle="collapse" href="#sub_tab">Subscribe</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-dark btn-block sidebar-button" data-toggle="collapse" href="#pub_tab">Publish</button>
+      </div>
+  </div>
+
+  <div class="col-5" style="padding-top: 20px;">
+
+    <div class="model-section">
+        <div class="model-tag">
+            <a>Lights</a>
+            <small>All methods concerning lights.</small>
+            <hr>
         </div>
 
-        <div class="tab-content" style="padding-top: 20px;">
-          <div class="tab-pane active" id="con" role="tabpanel" aria-labelledby="home-tab">
-                  <div class="card">
-                      <div class="card-body">
-
-                            <div class="card-title">
-                              <h6 class="mb-0">Connection</h6>
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="urladdon">Host</span>
-                              </div>
-                              <input type="text" class="form-control" id="urlInput" aria-describedby="urladdon" value="iot.eclipse.org">
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="pathaddon">Path</span>
-                              </div>
-                              <input type="text" class="form-control" id="pathInput" aria-describedby="pathaddon" value="/ws">
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="portaddon">Port</span>
-                              </div>
-                              <input type="text" class="form-control" id="portInput" aria-describedby="portaddon" value="80">
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="useraddon">Username</span>
-                              </div>
-                              <input type="text" class="form-control" id="userInput" aria-describedby="useraddon">
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="pwaddon">Password</span>
-                              </div>
-                              <input type="password" class="form-control" id="pwInput" aria-describedby="pwaddon">
-                            </div>
-
-                            <div class="input-group input-group-sm mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="kaaddon">Keep Alive</span>
-                              </div>
-                              <input type="text" class="form-control" id="keepAliveInput" aria-describedby="kaaddon" value="60">
-                            </div>
-
-                            <div class="form-group input-group-sm mb-3">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="cleanSessionInput" checked>
-                                <label class="form-check-label" for="cleanSessionInput">
-                                  Clean Session
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="sslInput">
-                                <label class="form-check-label" for="sslInput">
-                                  SSL
-                                </label>
-                              </div>
-                            </div>
-
-                            <button id="connect_button" type="button" class="btn btn-secondary btn-block">Connect</button>
-
-                      </div>
-                    </div>
-          </div>
-          <div class="tab-pane" id="sub" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title">
-                  <h6 class="mb-0">Subscribe</h6>
-                </div>
-              </div>
+        <div class="card model-card">
+            <div class="card-header model-header model-header-sub" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                <button class="btn btn-success btn-sm model-method">Pub</button>
+                <span class="model-path">application/[applicationID]/node/[devEUI]/rx</span>
             </div>
-          </div>
-          <div class="tab-pane" id="pub" role="tabpanel" aria-labelledby="messages-tab">
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title">
-                  <h6 class="mb-0">Publish</h6>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                <div class="card-body model-content">
+
+                    <h5>Topic members</h5>
+                    <hr>
+                    <dl class="row">
+                      <dt class="col-sm-5">applicationID</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the application"></dd>
+
+                      <dt class="col-sm-5">devEUI</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+                    </dl>
+
+                    <h5>Payload Required fields</h5>
+                    <hr>
+                    <dl class="row">
+                      <dt class="col-sm-5">applicationID</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+
+                      <dt class="col-sm-5">devEUI</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+                    </dl>
+
+                    <h5>Payload Optional fields</h5>
+                    <hr>
+                    <dl class="row">
+                      <dt class="col-sm-5">applicationID</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+
+                      <dt class="col-sm-5">devEUI</dt>
+                      <dd class="col-sm-7"><input type="text" class="form-control" placeholder="ID of the device"></dd>
+                      
+                    </dl>
+                    <button class="btn btn-success btn-sm btn-block">Publish</button>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
 
+    </div>
   </div>
 
-  <div class="col-5">
-
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start active">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/rx</h5>
-          <small>5 sub-methods</small>
+  <div class="col-5" style="padding-top: 20px;">
+        <div class="model-tag">
+            <a>Messages</a>
+            <small>All subscribed topics.</small>
+            <button id="clear_button" type="button" class="btn btn-secondary btn-sm">Clear</button>
+            <hr>
         </div>
-        <p class="mb-1">Topic for payloads received from your nodes.</p>
-      </a>
-      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/join</h5>
-          <small class="text-muted">3 sub-methods</small>
-        </div>
-        <p class="mb-1">Topic for join notifications.</p>
-      </a>
-      <a href="#" class="list-group-item list-group-item-secondary list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">application/[applicationID]/node/[devEUI]/ack</h5>
-          <small class="text-muted">2 sub-methods</small>
-        </div>
-        <p class="mb-1">Topic for ACK notifications.</p>
-      </a>
-    </div>
-  
-  </div>
-  <div class="col-5">
 
-    <h5 class="text-center">MQTT Messages</h5>
-    <hr>
-
-    <div class="mqtt-message mqtt-message-default">
-      <span class="mqtt-message-title">test/</span>
-      {"payload": "test"}
-    </div>
-
-    <div class="mqtt-message mqtt-message-danger">
-      <span class="mqtt-message-title">test2/</span>
-      {"payload": "test"}
-    </div>
+    <div id="mqtt_message_stream" style="padding-top: 20px;"></div>
 
   </div>
+</div>
 </div>
 
     <script src="js/jquery-3.2.1.slim.min.js"></script>
@@ -187,9 +176,8 @@
         websocketclient.connect();
       });
 
-      $('#myTab a').on('click', function (e) {
-        e.preventDefault()
-        $(this).tab('show')
+      $( "#clear_button" ).click(function() {
+        $( "#mqtt_message_stream" ).empty();
       });
     </script>
 

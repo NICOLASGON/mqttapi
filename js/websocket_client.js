@@ -39,12 +39,12 @@ var websocketclient = {
             options.password = password;
         }
 
-        this.client.connect(options);
+        websocketclient.client.connect(options);
     },
 
     'onConnect': function () {
         websocketclient.connected = true;
-        console.log("connected");
+        websocketclient.client.subscribe("test/interface", {qos: 0});
 
         $( "#mqtt_state_indicator" ).html( "Connected" );
         $( "#mqtt_state_indicator" ).removeClass( "badge-info" );
@@ -54,7 +54,6 @@ var websocketclient = {
 
     'onFail': function (message) {
         websocketclient.connected = false;
-        console.log("error: " + message.errorMessage);
     },
 
     'onConnectionLost': function (responseObject) {
@@ -69,7 +68,7 @@ var websocketclient = {
     },
 
     'onMessageArrived': function (message) {
-        console.log("onMessageArrived:" + message.payloadString + " qos: " + message.qos);
+        $( "#mqtt_message_stream" ).append("<div class=\"mqtt-message mqtt-message-danger\"><span class=\"mqtt-message-title\">" + message.destinationName + "</span>" + message.payloadString + "</div>");
     },
 
     'disconnect': function () {
