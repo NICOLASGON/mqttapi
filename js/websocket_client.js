@@ -74,6 +74,12 @@ var websocketclient = {
         this.client.subscribe(topic, {qos: 0});
     },
 
+    'publish': function (topic, message) {
+        msg = new Paho.MQTT.Message(message);
+        msg.destinationName = topic;
+        this.client.send(msg);
+    },
+
     'disconnect': function () {
         this.client.disconnect();
     },

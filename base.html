@@ -98,80 +98,80 @@
 
   <div class="col-5" style="padding-top: 20px;">
 
+    {% for m in models %}
     <div class="model-section">
         <div class="model-tag">
-            <a>Lights</a>
-            <small>All methods concerning lights.</small>
+            <a>{{ m.name }}</a>
+            <small>{{ m.description }}</small>
             <hr>
         </div>
 
-        <div class="card model-card border-info">
-            <div class="card-header model-header model-header-pub" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
-                <button class="btn btn-info btn-sm model-method">Pub</button>
-                <span class="model-path">application/applicationID/node/devEUI/tx</span>
-            </div>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
-                <div class="card-body model-content">
+        {% for c in m["methods"] %}
+            {% if c["type"] == "publish" %}
+            <div class="card model-card border-info">
+                <div class="card-header model-header model-header-pub" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                    <button class="btn btn-info btn-sm model-method">Pub</button>
+                    <span class="model-path">{{ c["topic"] }}</span>
+                </div>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body model-content">
 
-                    <h5>Topic members</h5>
-                    <hr>
-                    <dl class="row">
-                      <dt class="col-sm-5">applicationID</dt>
-                      <dd class="col-sm-7"><input type="text" name="applicationID" class="form-control model-topic-input" placeholder="ID of the application"></dd>
+                        <h5>Topic members</h5>
+                        <hr>
+                        <dl class="row">
+                          {% for topic_member in c["topic_members"] %}
+                          <dt class="col-sm-5">{{ topic_member }}</dt>
+                          <dd class="col-sm-7"><input type="text" name="{{ topic_member }}" class="form-control model-topic-input" placeholder="{{ topic_member }}"></dd>
+                          {% endfor %}
+                        </dl>
 
-                      <dt class="col-sm-5">devEUI</dt>
-                      <dd class="col-sm-7"><input type="text" name="devEUI" class="form-control model-topic-input" placeholder="ID of the device"></dd>
-                    </dl>
+                        <h5>Payload Required fields</h5>
+                        <hr>
+                        <dl class="row">
+                          {% for required_field in c["required_fields"] %}
+                          <dt class="col-sm-5">{{ required_field }}</dt>
+                          <dd class="col-sm-7"><input type="text" name="{{ required_field }}" class="form-control model-field-required" placeholder="{{ required_field }}"></dd>
+                          {% endfor %}
+                        </dl>
 
-                    <h5>Payload Required fields</h5>
-                    <hr>
-                    <dl class="row">
-                      <dt class="col-sm-5">luminosity</dt>
-                      <dd class="col-sm-7"><input type="text" name="luminosity" class="form-control model-field-required" placeholder="Luminosity (0-255)"></dd>
-
-                      <dt class="col-sm-5">color</dt>
-                      <dd class="col-sm-7"><input type="text" name="color" class="form-control model-field-required" placeholder="Color (#xxyyzz)"></dd>
-                    </dl>
-
-                    <h5>Payload Optional fields</h5>
-                    <hr>
-                    <dl class="row">
-                      <dt class="col-sm-5">period</dt>
-                      <dd class="col-sm-7"><input type="text" name="period" class="form-control model-field-optional" placeholder="Duration of switch on state (ms))"></dd>
-
-                      <dt class="col-sm-5">state_on_poweron</dt>
-                      <dd class="col-sm-7"><input type="text" name="state_on_poweron" class="form-control model-field-optional" placeholder="State when power on (on/off)"></dd>
-                      
-                    </dl>
-                    <button class="btn btn-info btn-sm btn-block publish_button">Publish</button>
+                        <h5>Payload Optional fields</h5>
+                        <hr>
+                        <dl class="row">
+                          {% for optional_field in c["optional_fields"] %}
+                          <dt class="col-sm-5">{{ optional_field }}</dt>
+                          <dd class="col-sm-7"><input type="text" name="{{ optional_field }}" class="form-control model-field-optional" placeholder="{{ optional_field }}"></dd>
+                          {% endfor %}
+                        </dl>
+                        <button class="btn btn-info btn-sm btn-block publish_button">Publish</button>
+                    </div>
                 </div>
             </div>
-        </div>
+            {% elif c["type"] == "subscribe" %}
+            <div class="card model-card border-success">
+                <div class="card-header model-header model-header-sub" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <button class="btn btn-success btn-sm model-method">Sub</button>
+                    <span class="model-path">{{ c["topic"] }}</span>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                    <div class="card-body model-content">
 
-        <div class="card model-card border-success">
-            <div class="card-header model-header model-header-sub" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <button class="btn btn-success btn-sm model-method">Sub</button>
-                <span class="model-path">application/applicationID/node/devEUI/rx</span>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
-                <div class="card-body model-content">
+                        <h5>Topic members</h5>
+                        <hr>
+                        <dl class="row">
+                          {% for topic_member in c["topic_members"] %}
+                          <dt class="col-sm-5">{{ topic_member }}</dt>
+                          <dd class="col-sm-7"><input type="text" name="{{ topic_member }}" class="form-control model-topic-input" placeholder="{{ topic_member }}"></dd>
+                          {% endfor %}
+                        </dl>
 
-                    <h5>Topic members</h5>
-                    <hr>
-                    <dl class="row">
-                      <dt class="col-sm-5">applicationID</dt>
-                      <dd class="col-sm-7"><input name="applicationID" type="text" class="form-control model-topic-input" placeholder="ID of the application"></dd>
-
-                      <dt class="col-sm-5">devEUI</dt>
-                      <dd class="col-sm-7"><input name="devEUI" type="text" class="form-control model-topic-input" placeholder="ID of the device"></dd>
-                    </dl>
-
-                    <button class="btn btn-success btn-sm btn-block subscribe_button">Subscribe</button>
+                        <button class="btn btn-success btn-sm btn-block subscribe_button">Subscribe</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
+            {% endif %}
+        {% endfor %}
     </div>
+    {% endfor %}
   </div>
 
   <div class="col-5" style="padding-top: 20px;">
